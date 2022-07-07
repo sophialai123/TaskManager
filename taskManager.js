@@ -14,7 +14,7 @@ class TaskManager {
     let cache = localStorage.getItem("storedTasks")
     if (cache) {
       let tasks = JSON.parse(cache)
-      console.log(tasks)
+      //console.log(tasks)
       tasks.forEach((task) => {
         this.addTask(task.name, task.description, task.assignedTo, task.dueDate, task.status)
       })
@@ -43,79 +43,77 @@ class TaskManager {
     this.render(task)
     //update value for the localStorage in the array
     this.updateCache()
-
-
   }
 
   // Explicitly splices out the selected task from the 'tasks' array
   //not working yet
   deleteTask(index) {
-    for (let i = 0; i < this.taskList.length; i++) {
-      if (this.taskList[i].id === index) {
-        this.taskList.splice(index, 1)
-        deleteBtn()
-        this.updateCache()
+    document.getElementById('delete').addEventListener('click', (event) => {
+      for (let i = 0; i < this.taskList.length; i++) {
+        if (this.taskList[i].id === index) {
+          this.taskList.splice(index, 1)
+          this.updateCache();
+        }
+        console.log(this.taskList[i])
       }
-      console.log("Found the index of the task wanted: ", this.taskList[i].id)
-    }
-    //console.log(index)//indexof the todo array
+
+    })
+    //console.log(index)  // object index
   }
 
 
 
-  //display the data
+
+
+  //display the task object
   render(task) {
     if (task.status === "Todo") {
+      // let todoArray = [];
       const todoDiv = document.getElementById('todo');
       const div = document.createElement('div')
       div.innerHTML = createHtmlTask(task);
       todoDiv.appendChild(div);
-      document.getElementById('delete').addEventListener('click', () => {
-        taskPlanner.deleteTask(task.id)
-
-      })
-
+      // document.getElementById('delete').addEventListener('click', () => {
+      //   todoArray.map(task => task.id === task.id)
+      //   taskPlanner.deleteTask(task.id)
+      // })
+      //console.log(task.id)//all the task index
+      //console.log(task) // object inside of todoDiv only
+      this.deleteTask(task.id)
     }
-    else if (task.status === "Progress") {
+
+    if (task.status === "Progress") {
       const progressDiv = document.getElementById('progress');
       const div = document.createElement('div')
       div.innerHTML = createHtmlTask(task);
       progressDiv.appendChild(div);
-      document.getElementById('delete').addEventListener('click', () => {
-        taskPlanner.deleteTask(task.id)
 
-      })
-
-
+      this.deleteTask(task.id)
     }
-    else if (task.status === "Review") {
+    if (task.status === "Review") {
       const reviewDiv = document.getElementById('review');
       const div = document.createElement('div')
       div.innerHTML = createHtmlTask(task);
       review.appendChild(div);
-      document.getElementById('delete').addEventListener('click', () => {
-        taskPlanner.deleteTask(task.id)
-
-      })
+      // document.getElementById('delete').addEventListener('click', () => {
+      //   taskPlanner.deleteTask(task.id)
+      // })
+      this.deleteTask(task.id)
 
     }
-    else if (task.status === "Done") {
+    if (task.status === "Done") {
       const doneDiv = document.getElementById('done');
       const div = document.createElement('div')
       div.innerHTML = createHtmlTask(task);
       doneDiv.appendChild(div);
-      document.getElementById('delete').addEventListener('click', () => {
-        taskPlanner.deleteTask(task.id)
-      })
+      // document.getElementById('delete').addEventListener('click', () => {
+      //   taskPlanner.deleteTask(task.id)
+      // })
+      this.deleteTask(task.id)
 
     }
-
-
   }
-
 }
-
-
 
 
 
@@ -156,9 +154,10 @@ const createHtmlTask = (task) => {
 
 }
 
-const deleteBtn = () => {
-  document.getElementById('delete').addEventListener('click', () => {
-    taskPlanner.deleteTask(task.id)
+// const deleteBtn = () => {
+//   document.getElementById('delete').addEventListener('click', (event) => {
+//     console.log(event.target)
+//     taskPlanner.deleteTask(task.id)
 
-  })
-}
+//   })
+// }
