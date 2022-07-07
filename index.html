@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todotask</title>
+
+  <!-- Boostrap Links  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+
+  <!-- fontwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-success mt-4" style="height: 42px;" data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop">
+        Add Task
+      </button>
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+          <div class="navbar-nav d-flex flex-column">
+            <a class="nav-link active" aria-current="page" href=""><i class="fa-solid fa-house-user me-2"></i>Home </a>
+            <a class="nav-link" href=""><i class="fa-solid fa-calendar-days me-2"></i>Calender</a>
+            <a class="nav-link" href=""><i class="fa-solid fa-bell me-2"></i>Notifications</a>
+            <a class="nav-link" href=""><i class="fa-solid fa-filter me-2"></i>Filter</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  </header>
+
+  <main>
+    <!-- --------------------------- Serach Bar ----------------------------->
+    <div class="d-flex mb-5 search" style="width: 70%;" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </div>
+    <div class="container py-6 ">
+      <div class="row gap-5 mb-3">
+        <!-- --------------------  Todo --------------------------->
+        <div class="col border rounded bg-light" id="todo">
+          <h3 class="text-center text-info"> Todo <a><i class="fa-solid fa-circle-plus "></i></a></h3>
+
+
+        </div>
+
+        <!-- --------------------  In Progress --------------------------->
+        <div class="col  border rounded bg-light" id="progress">
+          <h3 class="text-center text-primary">Progress<a><i class="fa-solid fa-circle-plus"></i></a></h3>
+
+        </div>
+
+        <!-- --------------------  Review --------------------------->
+        <div class="col border rounded bg-light" id="review">
+          <h3 class="text-center text-warning">
+            Review<a><i class="fa-solid fa-circle-plus "></i></a></h3>
+          <div>
+          </div>
+        </div>
+        <!-- -------------------- Done --------------------------->
+        <div class="col border rounded bg-light" id="done">
+          <h3 class="text-center text-success">Done<a><i class="fa-solid fa-circle-plus "></i></a></h3>
+        </div>
+      </div>
+      <!-- ------------------------------- Popup Form----------------------------- -->
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div> -->
+            <div class="modal-body">
+              <form action="" id="form">
+                <h1 class="text-center">Task Planner Form</h1>
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> <i
+                    class="fa-solid fa-circle-xmark fa-2x"></i></button>
+
+                <!-- Name -->
+                <div class="row">
+                  <div class="col">
+                    <label for="">Task Name: </label><br>
+                    <span id="ferr"></span>
+                    <input id="fname" type="text" class="form-control" placeholder="First name" aria-label="First name"
+                      required>
+                  </div>
+                </div>
+
+                <!-- descrption -->
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">Descrption: </label><br>
+                  <span id="derr"></span>
+                  <textarea id="descrption" class="form-control" id="exampleFormControlTextarea1" rows="6"
+                    placeholder="Descrption..." required></textarea>
+                </div>
+
+                <!-- Assigned to -->
+                <div class="mb-3">
+                  <label for="">Assigned to: </label><br>
+                  <span id="assignTo"></span>
+                  <input id="assign" type="text" class="form-control" placeholder="First name" aria-label="First name"
+                    required>
+
+                </div>
+
+                <!-- Due date -->
+                <div class="mb-3">
+                  <label for="">Due Date: </label><br>
+                  <span id="dateErr"></span>
+                  <input id="dateValue" type="date" class="form-control mb-3">
+                </div>
+
+                <!-- Status -->
+                <div>
+                  <label for="">Status: </label><br>
+                  <span id="statusErr"></span>
+                  <select id="status" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                    required>
+                    <option selected></option>
+                    <option value="Todo">Todo</option>
+                    <option value="Progress">Progress</option>
+                    <option value="Review">Review</option>
+                    <option value="Done">Done</option>
+                  </select>
+                </div>
+
+                <!-- Submit Button -->
+              </form>
+            </div>
+            <div class="modal-footer justify-content-center">
+
+              <button id="resetButton" type="button" class="btn btn-success  mb-3">Reset</button>
+              <button id="submitButton" type="button" class="btn btn-success  mb-3">Submit</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ------------------------------- End of Form----------------------------- -->
+  </main>
+  <script src="./taskManager.js"></script>
+  <script src="main.js"></script>
+
+
+
+</body>
+
+</html>
