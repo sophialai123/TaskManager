@@ -51,6 +51,8 @@ class TaskManager {
     document.getElementById('delete').addEventListener('click', (event) => {
       for (let i = 0; i < this.taskList.length; i++) {
         if (this.taskList[i].id === index) {
+
+          //will delete two items at first
           this.taskList.splice(index, 1)
           this.updateCache();
         }
@@ -63,8 +65,6 @@ class TaskManager {
 
 
 
-
-
   //display the task object
   render(task) {
     if (task.status === "Todo") {
@@ -73,12 +73,6 @@ class TaskManager {
       const div = document.createElement('div')
       div.innerHTML = createHtmlTask(task);
       todoDiv.appendChild(div);
-      // document.getElementById('delete').addEventListener('click', () => {
-      //   todoArray.map(task => task.id === task.id)
-      //   taskPlanner.deleteTask(task.id)
-      // })
-      //console.log(task.id)//all the task index
-      //console.log(task) // object inside of todoDiv only
       this.deleteTask(task.id)
     }
 
@@ -87,7 +81,6 @@ class TaskManager {
       const div = document.createElement('div')
       div.innerHTML = createHtmlTask(task);
       progressDiv.appendChild(div);
-
       this.deleteTask(task.id)
     }
     if (task.status === "Review") {
@@ -95,9 +88,6 @@ class TaskManager {
       const div = document.createElement('div')
       div.innerHTML = createHtmlTask(task);
       review.appendChild(div);
-      // document.getElementById('delete').addEventListener('click', () => {
-      //   taskPlanner.deleteTask(task.id)
-      // })
       this.deleteTask(task.id)
 
     }
@@ -106,11 +96,7 @@ class TaskManager {
       const div = document.createElement('div')
       div.innerHTML = createHtmlTask(task);
       doneDiv.appendChild(div);
-      // document.getElementById('delete').addEventListener('click', () => {
-      //   taskPlanner.deleteTask(task.id)
-      // })
       this.deleteTask(task.id)
-
     }
   }
 }
@@ -153,11 +139,3 @@ const createHtmlTask = (task) => {
   )
 
 }
-
-// const deleteBtn = () => {
-//   document.getElementById('delete').addEventListener('click', (event) => {
-//     console.log(event.target)
-//     taskPlanner.deleteTask(task.id)
-
-//   })
-// }
