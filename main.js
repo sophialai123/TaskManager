@@ -121,6 +121,3 @@ resetButton.addEventListener('click', () => {
   statusError.innerHTML = "";
 
 })
-
-
-//get all the value from the input put in the display in the task

@@ -44,36 +44,6 @@ class TaskManager {
     this.updateCache()
   }
 
-  // Explicitly splices out the selected task from the 'tasks' array
-  //not working yet
-  deleteTask(index) {
-    let newTasks = [];
-    console.log(document.getElementById('delete'))
-    document.getElementById('delete').addEventListener('click', (event) => {
-
-      for (let i = 0; i < this.taskList.length; i++) {
-        if (this.taskList[i].id === index) {
-          //will delete three items at first?? only the first delete button works
-          this.taskList.splice(index, 1)
-          newTasks.push(this.taskList[i])
-          this.updateCache();
-
-        }
-        // this.taskList = newTasks
-        // console.log(this.taskList)
-        console.log(index)
-      }
-
-
-      // this first button deletes all
-
-      // this.taskList.splice(this.taskList.findIndex(a => a.id === index), 1);
-      // this.updateCache();
-
-    })
-    console.log(index)  // object index 
-  }
-
 
 
   //display the task object
@@ -81,6 +51,55 @@ class TaskManager {
     htmlDivs(task)
   }
 
+  // Explicitly splices out the selected task from the 'tasks' array
+  //not working yet
+  deleteTask(id) {
+    for (let i = 0; i < this.taskList.length; i++) {
+      if (this.taskList[i].id === id) {
+        console.log("Found the index of the task wanted: ", i)
+        this.taskList.splice(i, 1)
+        //update the localstorage
+        this.updateCache();
+      }
+    }
+  }
+
+}
+
+//divs will be added based on task status
+const htmlDivs = (task) => {
+  let divBtnHtmlId;
+  switch (task.status) {
+    case "Todo":
+      divBtnHtmlId = 'todo';
+      break
+    case "Progress":
+      divBtnHtmlId = 'progress';
+      break
+    case "Review":
+      divBtnHtmlId = 'review';
+      break
+    case "Done":
+      divBtnHtmlId = 'done';
+      break
+  }
+
+  const div = document.createElement('div');
+  div.innerHTML = createHtmlTask(task);
+  const deleteBtn = document.createElement('button');
+  deleteBtn.innerHTML = "Delete";
+  deleteBtn.classList.add('btn');
+  deleteBtn.classList.add('btn-danger')
+  deleteBtn.addEventListener('click', (e) => {
+    //call calss delete method
+    taskPlanner.deleteTask(task.id)
+    //remove the html element on the page
+    div.remove()
+  })
+  div.appendChild(deleteBtn);
+
+  //add the div based on the statas Id
+  return document.getElementById(divBtnHtmlId).appendChild(div)
 }
 
 
@@ -110,10 +129,8 @@ const createHtmlTask = (task) => {
               <input class="form-control" type="text" placeholder="Status: ${task.status}"readonly>
             </div>
             <!-- Edit buttons -->
-            <div class="d-flex gap-3 justify-content-center ">
-              <button id="edit"class="btn btn-secondary">Edit</button>
-              <button id="delete"class="btn btn-danger">Delete</button>
-            </div>
+            <div class="d-flex gap-3 justify-content-center id="lastBtn">
+            </div> 
           </div>  
          </div >  
         `
@@ -121,28 +138,15 @@ const createHtmlTask = (task) => {
 
 }
 
-//divs will be added based on task status
-const htmlDivs = (task) => {
-  let divBtnHtmlId;
-  switch (task.status) {
-    case "Todo":
-      divBtnHtmlId = 'todo';
-      break
-    case "Progress":
-      divBtnHtmlId = 'progress';
-      break
-    case "Review":
-      divBtnHtmlId = 'review';
-      break
-    case "Done":
-      divBtnHtmlId = 'done';
-      break
-  }
 
-  const div = document.createElement('div');
-  div.innerHTML = createHtmlTask(task);
-  //add the div based on the statas Id
-  document.getElementById(divBtnHtmlId).appendChild(div);
-  console.log(divBtnHtmlId)
 
-}
+
+// const deletBtnHtml = () => {
+//   return `<div class="d-flex gap-3 justify-content-center ">
+//   <button id="edit"class="btn btn-secondary">Edit</button>
+//   <button id="delete"class="btn btn-danger">Delete</button>
+// </div>`
+
+// }
+
+/*  */
