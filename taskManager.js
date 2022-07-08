@@ -48,20 +48,25 @@ class TaskManager {
   // Explicitly splices out the selected task from the 'tasks' array
   //not working yet
   deleteTask(index) {
+    let newTasks = [];
     document.getElementById('delete').addEventListener('click', (event) => {
       for (let i = 0; i < this.taskList.length; i++) {
         if (this.taskList[i].id === index) {
-
-          //will delete two items at first
+          //will delete three items at first?? only the first delete button works
           this.taskList.splice(index, 1)
+          newTasks.push(this.taskList[i])
           this.updateCache();
+          console.log(index)
         }
-        console.log(this.taskList[i])
+        this.taskList = newTasks
+        console.log(this.taskList)
       }
 
     })
     //console.log(index)  // object index
   }
+
+
 
 
 
