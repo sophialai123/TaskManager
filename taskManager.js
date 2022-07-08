@@ -1,4 +1,3 @@
-
 //create a calss
 
 class TaskManager {
@@ -49,89 +48,40 @@ class TaskManager {
   //not working yet
   deleteTask(index) {
     let newTasks = [];
+    console.log(document.getElementById('delete'))
     document.getElementById('delete').addEventListener('click', (event) => {
-      // for (let i = 0; i < this.taskList.length; i++) {
-      //   if (this.taskList[i].id === index) {
-      //     //will delete three items at first?? only the first delete button works
-      //     this.taskList.splice(index, 1)
-      //     newTasks.push(this.taskList[i])
-      //     this.updateCache();
-      //     console.log(index)
-      //   }
-      //   this.taskList = newTasks
-      //   console.log(this.taskList)
-      // }
+
+      for (let i = 0; i < this.taskList.length; i++) {
+        if (this.taskList[i].id === index) {
+          //will delete three items at first?? only the first delete button works
+          this.taskList.splice(index, 1)
+          newTasks.push(this.taskList[i])
+          this.updateCache();
+
+        }
+        // this.taskList = newTasks
+        // console.log(this.taskList)
+        console.log(index)
+      }
 
 
       // this first button deletes all
 
-      this.taskList.splice(this.taskList.findIndex(a => a.id === index), 1);
-      this.updateCache();
+      // this.taskList.splice(this.taskList.findIndex(a => a.id === index), 1);
+      // this.updateCache();
 
     })
-    console.log(index)  // object index
+    console.log(index)  // object index 
   }
 
 
 
   //display the task object
   render(task) {
-    this.todoHtml(task);
-    this.progressHtml(task);
-    this.reviewHtml(task);
-    this.doneHtml(task)
+    htmlDivs(task)
   }
 
-  todoHtml(task) {
-    if (task.status === "Todo") {
-      // let todoArray = [];
-      const todoDiv = document.getElementById('todo');
-      const div = document.createElement('div')
-      div.innerHTML = createHtmlTask(task);
-      todoDiv.appendChild(div);
-      this.deleteTask(task.id)
-    }
-
-  }
-
-
-  progressHtml(task) {
-    if (task.status === "Progress") {
-      const progressDiv = document.getElementById('progress');
-      const div = document.createElement('div')
-      div.innerHTML = createHtmlTask(task);
-      progressDiv.appendChild(div);
-      this.deleteTask(task.id)
-    }
-
-  }
-
-
-
-  reviewHtml(task) {
-    if (task.status === "Review") {
-      const reviewDiv = document.getElementById('review');
-      const div = document.createElement('div')
-      div.innerHTML = createHtmlTask(task);
-      review.appendChild(div);
-      this.deleteTask(task.id)
-
-    }
-
-  }
-
-  doneHtml(task) {
-    if (task.status === "Done") {
-      const doneDiv = document.getElementById('done');
-      const div = document.createElement('div')
-      div.innerHTML = createHtmlTask(task);
-      doneDiv.appendChild(div);
-      this.deleteTask(task.id)
-    }
-
-  }
 }
-
 
 
 //create html 
@@ -171,3 +121,28 @@ const createHtmlTask = (task) => {
 
 }
 
+//divs will be added based on task status
+const htmlDivs = (task) => {
+  let divBtnHtmlId;
+  switch (task.status) {
+    case "Todo":
+      divBtnHtmlId = 'todo';
+      break
+    case "Progress":
+      divBtnHtmlId = 'progress';
+      break
+    case "Review":
+      divBtnHtmlId = 'review';
+      break
+    case "Done":
+      divBtnHtmlId = 'done';
+      break
+  }
+
+  const div = document.createElement('div');
+  div.innerHTML = createHtmlTask(task);
+  //add the div based on the statas Id
+  document.getElementById(divBtnHtmlId).appendChild(div);
+  console.log(divBtnHtmlId)
+
+}
