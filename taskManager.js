@@ -50,28 +50,39 @@ class TaskManager {
   deleteTask(index) {
     let newTasks = [];
     document.getElementById('delete').addEventListener('click', (event) => {
-      for (let i = 0; i < this.taskList.length; i++) {
-        if (this.taskList[i].id === index) {
-          //will delete three items at first?? only the first delete button works
-          this.taskList.splice(index, 1)
-          newTasks.push(this.taskList[i])
-          this.updateCache();
-          console.log(index)
-        }
-        this.taskList = newTasks
-        console.log(this.taskList)
-      }
+      // for (let i = 0; i < this.taskList.length; i++) {
+      //   if (this.taskList[i].id === index) {
+      //     //will delete three items at first?? only the first delete button works
+      //     this.taskList.splice(index, 1)
+      //     newTasks.push(this.taskList[i])
+      //     this.updateCache();
+      //     console.log(index)
+      //   }
+      //   this.taskList = newTasks
+      //   console.log(this.taskList)
+      // }
+
+
+      // this first button deletes all
+
+      this.taskList.splice(this.taskList.findIndex(a => a.id === index), 1);
+      this.updateCache();
 
     })
-    //console.log(index)  // object index
+    console.log(index)  // object index
   }
-
-
 
 
 
   //display the task object
   render(task) {
+    this.todoHtml(task);
+    this.progressHtml(task);
+    this.reviewHtml(task);
+    this.doneHtml(task)
+  }
+
+  todoHtml(task) {
     if (task.status === "Todo") {
       // let todoArray = [];
       const todoDiv = document.getElementById('todo');
@@ -81,6 +92,10 @@ class TaskManager {
       this.deleteTask(task.id)
     }
 
+  }
+
+
+  progressHtml(task) {
     if (task.status === "Progress") {
       const progressDiv = document.getElementById('progress');
       const div = document.createElement('div')
@@ -88,6 +103,12 @@ class TaskManager {
       progressDiv.appendChild(div);
       this.deleteTask(task.id)
     }
+
+  }
+
+
+
+  reviewHtml(task) {
     if (task.status === "Review") {
       const reviewDiv = document.getElementById('review');
       const div = document.createElement('div')
@@ -96,6 +117,10 @@ class TaskManager {
       this.deleteTask(task.id)
 
     }
+
+  }
+
+  doneHtml(task) {
     if (task.status === "Done") {
       const doneDiv = document.getElementById('done');
       const div = document.createElement('div')
@@ -103,6 +128,7 @@ class TaskManager {
       doneDiv.appendChild(div);
       this.deleteTask(task.id)
     }
+
   }
 }
 
@@ -144,3 +170,4 @@ const createHtmlTask = (task) => {
   )
 
 }
+
