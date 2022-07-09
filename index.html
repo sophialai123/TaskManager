@@ -42,17 +42,16 @@
         </div>
       </div>
     </nav>
+    <button id="time"></button>
   </header>
-
   <main>
-    <!-- --------------------------- Serach Bar ----------------------------->
+    <!-- --------------------------- Title" ----------------------------->
     <div class="d-flex mb-5 search" style="width: 70%;" role="search">
       <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-      <h1>Task Manager</h1>
-      <button id="time"></button>
       <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
     </div>
     <div class="container py-6 ">
+      <h1 id="title">Task Manager</h1>
       <div class="row gap-5 mb-3">
         <!-- --------------------  Todo --------------------------->
         <div class="col border rounded bg-light" id="todo">
@@ -88,10 +87,9 @@
             <div class="modal-body">
               <form action="" id="form">
                 <h1 class="text-center">Task Planner Form</h1>
-
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> <i
-                    class="fa-solid fa-circle-xmark fa-2x"></i></button>
-
+                <button type="button" id="close" class="btn" data-bs-dismiss="modal">
+                  <i class="fa-solid fa-circle-xmark "></i>
+                </button>
                 <!-- Name -->
                 <div class="row">
                   <div class="col">

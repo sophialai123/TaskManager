@@ -91,18 +91,16 @@ const createHtmlTask = (task) => {
             <div class="card-body border">
               <div class="mb-3 ">
               <!--  <labtimeDivclass="form-control for="">Assigned to: </label>-->
-              <input class=" form-control" type="text" placeholder="Assigned to: ${task.assignedTo}"readonly>
+              <textarea class="form-control" id="" cols=" 10" rows="2" placeholder="Assigned to: ${task.assignedTo}"readonly></textarea>
             </div>
             <div class="mb-3">
             <!-- <labtimeDivfor="">Due Date: </label> -->
-              <input class="form-control" type="text" placeholder="Due Date: ${task.dueDate}"readonly>
+              <textarea class="form-control" id="" cols=" 10" rows="2" placeholder="Due Date: ${task.dueDate}"readonly></textarea>
             </div>
             <div class="mb-3 ">
             <!-- <labtimeDivfor="">Description:</label>-->
-              <textarea class="form-control" id="" cols=" 30" rows="3" placeholder="Description: ${task.description}
-                    " readonly></textarea>
-            </div>
-           
+              <textarea class="form-control" id="" cols=" 30" rows="3" placeholder="Description: ${task.description}"readonly></textarea>
+            </div> 
             <!-- Edit buttons -->
           </div>  
          </div >  
