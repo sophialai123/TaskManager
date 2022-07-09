@@ -1,5 +1,4 @@
-//create a calss
-
+//create a taskManager class
 class TaskManager {
   constructor() {
     this.id = 0;
@@ -44,12 +43,27 @@ class TaskManager {
     this.updateCache()
   }
 
-
-
   //display the task object
   render(task) {
     htmlDivs(task)
+
   }
+
+
+  editTask(id) {
+    for (let i = 0; i < this.taskList.length; i++) {
+      if (this.taskList[i].id === id) {
+        console.log("Found the index of the task wanted: ", i);
+        // document.querySelector('btn-secondary').innerHTML = "done"
+
+        // editBtn.innerHTML = "Done";
+        // editBtn.className = "btn btn-success";
+        //update the localstorage
+        this.updateCache();
+      }
+    }
+  }
+
 
   // Explicitly splices out the selected task from the 'tasks' array
   //not working yet
@@ -66,9 +80,47 @@ class TaskManager {
 
 }
 
+//create html 
+const createHtmlTask = (task) => {
+  //return an object
+  return (
+    `
+          <div class="card mb-3">
+          <!-- <labtimeDivfor="">Task Name: </label> -->
+            <h5 class="card-header text-center fw-bold">${task.name}</h5>
+            <div class="card-body border">
+              <div class="mb-3 ">
+              <!--  <labtimeDivclass="form-control for="">Assigned to: </label>-->
+              <input class=" form-control" type="text" placeholder="Assigned to: ${task.assignedTo}"readonly>
+            </div>
+            <div class="mb-3">
+            <!-- <labtimeDivfor="">Due Date: </label> -->
+              <input class="form-control" type="text" placeholder="Due Date: ${task.dueDate}"readonly>
+            </div>
+            <div class="mb-3 ">
+            <!-- <labtimeDivfor="">Description:</label>-->
+              <textarea class="form-control" id="" cols=" 30" rows="3" placeholder="Description: ${task.description}
+                    " readonly></textarea>
+            </div>
+           
+            <!-- Edit buttons -->
+          </div>  
+         </div >  
+        `
+  )
+
+}
+
+
+/* 
+ <div class="mb-3">
+<input class="form-control" type="text" placeholder="Status: ${task.status}"readonly>
+</div> */
+
+
 //divs will be added based on task status
 const htmlDivs = (task) => {
-  let divBtnHtmlId;
+  let divBtnHtmlId
   switch (task.status) {
     case "Todo":
       divBtnHtmlId = 'todo';
@@ -84,69 +136,78 @@ const htmlDivs = (task) => {
       break
   }
 
+  //the whole div of each task
   const div = document.createElement('div');
   div.innerHTML = createHtmlTask(task);
+
+  const lastBtnDiv = document.createElement("div");
+  lastBtnDiv.className = 'd-flex gap-3 justify-content-center mb-3';
+
+  div.appendChild(lastBtnDiv)
+
+  //create edit button
+  const editBtn = document.createElement('button');
+  editBtn.innerHTML = "Edit";
+  editBtn.className = 'btn btn-secondary'
+  editBtn.addEventListener('click', (e) => {
+    editBtn.innerHTML = "Mask as Done";
+    editBtn.className = "btn btn-success";
+    task.status.value = "done"
+    taskPlanner.editTask(task.id)
+
+  })
+
+
+  // div.appendChild(editBtn);
+  lastBtnDiv.appendChild(editBtn)
+  //Create deletebutton
   const deleteBtn = document.createElement('button');
   deleteBtn.innerHTML = "Delete";
-  deleteBtn.classList.add('btn');
-  deleteBtn.classList.add('btn-danger')
+  deleteBtn.className = 'btn btn-danger'
   deleteBtn.addEventListener('click', (e) => {
     //call calss delete method
     taskPlanner.deleteTask(task.id)
     //remove the html element on the page
     div.remove()
   })
-  div.appendChild(deleteBtn);
-
-  //add the div based on the statas Id
-  return document.getElementById(divBtnHtmlId).appendChild(div)
-}
 
 
-//create html 
-const createHtmlTask = (task) => {
-  //return an object
-  return (
-    `
-          <div class="card mb-3">
-          <!-- <label for="">Task Name: </label> -->
-            <h5 class="card-header text-center fw-bold">${task.name}</h5>
-            <div class="card-body border">
-              <div class="mb-3 ">
-              <!--  <label class="form-control for="">Assigned to: </label>-->
-              <input class=" form-control" type="text" placeholder="Assigned to: ${task.assignedTo}"readonly>
-            </div>
-            <div class="mb-3">
-            <!-- <label for="">Due Date: </label> -->
-              <input class="form-control" type="text" placeholder="Due Date: ${task.dueDate}"readonly>
-            </div>
-            <div class="mb-3 ">
-            <!-- <label for="">Description:</label>-->
-              <textarea class="form-control" id="" cols=" 30" rows="3" placeholder="Description: ${task.description}
-                    " readonly></textarea>
-            </div>
-            <div class="mb-3">
-              <input class="form-control" type="text" placeholder="Status: ${task.status}"readonly>
-            </div>
-            <!-- Edit buttons -->
-            <div class="d-flex gap-3 justify-content-center id="lastBtn">
-            </div> 
-          </div>  
-         </div >  
-        `
-  )
+  //div.appendChild(deleteBtn);
+  lastBtnDiv.appendChild(deleteBtn)
 
+  // //add the div based on the statas Id
+  return document.getElementById(divBtnHtmlId).appendChild(div);
 }
 
 
 
 
-// const deletBtnHtml = () => {
-//   return `<div class="d-flex gap-3 justify-content-center ">
-//   <button id="edit"class="btn btn-secondary">Edit</button>
-//   <button id="delete"class="btn btn-danger">Delete</button>
-// </div>`
 
-// }
 
-/*  */
+const timeDiv = document.getElementById('time');
+
+window.reload
+
+const displayDateTime = () => {
+
+
+  setInterval(function () {
+
+    let currentTime = new Date(),
+      currentDate = currentTime.toISOString().split('T')[0];
+    hours = currentTime.getHours(),
+      minutes = currentTime.getMinutes(),
+      seconds = currentTime.getSeconds(),
+      ampm = hours > 11 ? 'PM' : 'AM';
+
+    hours += hours < 10 ? '0' : '';
+    minutes += minutes < 10 ? '0' : '';
+
+    // timeDiv.innerHTML = hours + ":" + minutes + " " + ampm;
+    timeDiv.innerHTML = `Today is: ${currentDate} ${hours}:${minutes}:${seconds} ${ampm}`
+  }, 1000);
+};
+
+displayDateTime()
+
+

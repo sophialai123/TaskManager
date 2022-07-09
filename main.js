@@ -1,6 +1,6 @@
 /* *******************************  Form Input Vaildation ******************************* */
 
-//call the taskPlanner class here
+// //call the taskPlanner class here
 const taskPlanner = new TaskManager();
 
 const fname = document.getElementById('fname');

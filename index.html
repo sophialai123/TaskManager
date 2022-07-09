@@ -42,28 +42,25 @@
         </div>
       </div>
     </nav>
-
   </header>
 
   <main>
     <!-- --------------------------- Serach Bar ----------------------------->
     <div class="d-flex mb-5 search" style="width: 70%;" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
+      <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+      <h1>Task Manager</h1>
+      <button id="time"></button>
+      <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
     </div>
     <div class="container py-6 ">
       <div class="row gap-5 mb-3">
         <!-- --------------------  Todo --------------------------->
         <div class="col border rounded bg-light" id="todo">
           <h3 class="text-center text-info"> Todo <a><i class="fa-solid fa-circle-plus "></i></a></h3>
-
-
         </div>
-
         <!-- --------------------  In Progress --------------------------->
         <div class="col  border rounded bg-light" id="progress">
           <h3 class="text-center text-primary">Progress<a><i class="fa-solid fa-circle-plus"></i></a></h3>
-
         </div>
 
         <!-- --------------------  Review --------------------------->
@@ -130,6 +127,7 @@
                 </div>
 
                 <!-- Status -->
+
                 <div>
                   <label for="">Status: </label><br>
                   <span id="statusErr"></span>
@@ -160,9 +158,6 @@
   </main>
   <script src="./taskManager.js"></script>
   <script src="main.js"></script>
-
-
-
 </body>
 
 </html>

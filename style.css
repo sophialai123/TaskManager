@@ -20,6 +20,10 @@ body {
   background-color: var(--main-bg-color);
 }
 
+header {
+  height: 100vh;
+}
+
 header .navbar {
   display: flex;
   flex-direction: column;
@@ -80,6 +84,26 @@ main a i {
 
 main .search {
   margin-left: 300px;
+}
+
+main h1 {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+#time {
+  width: 15%;
+  border-radius: 10px;
+  background: #4B91FD;
+  background: -moz-linear-gradient(left, #4B91FD 0%, #A49A89 50%, #C5B4B8 100%);
+  background: -webkit-linear-gradient(left, #4B91FD 0%, #A49A89 50%, #C5B4B8 100%);
+  background: linear-gradient(to right, #4B91FD 0%, #A49A89 50%, #C5B4B8 100%);
+  position: absolute;
+  right: 0;
+  top: 0;
+
 }
 
 
