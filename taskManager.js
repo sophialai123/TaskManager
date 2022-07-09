@@ -206,25 +206,3 @@ const displayDateTime = () => {
 };
 
 displayDateTime()
-
-
-
-
-
-
-//Search Bar local storage 
-// const searchBarButton = document.getElementById('search');
-// const searchBarValue = document.getElementById('searchValue').value;
-// searchBarButton.addEventListener('click', () => {
-
-//   taskPlanner.addTask.filter((element) => {
-
-//     if (element.name.includes(searchBarValue)) {
-
-//       console.log("yes")
-
-//     } else {
-//       console.log('no')
-//     }
-//   })
-// })
