@@ -31,20 +31,15 @@
    
 
 ---
-## Desktop size
+## Desktop size and [Demo](https://sophialai123.github.io/TaskManager/)
 
 ![](images/desktop.png)
 
+---
 
-## Moblie size
+## Moblie size   
 
- ![](images/mobilesize.png)
+| Moblie size                | Mask as Done               |
+| -------------------------- | -------------------------- |
+| ![](images/mobilesize.png) | ![](images/maskasdone.png) |
 
-
-## Mask as Done
-
- ![](images/maskasdone.png)
-
-
-## [TaskManager Demo](https://sophialai123.github.io/TaskManager/)
- 
