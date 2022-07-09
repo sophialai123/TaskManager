@@ -41,6 +41,7 @@ class TaskManager {
     this.render(task)
     //update value for the localStorage in the array
     this.updateCache()
+
   }
 
   //display the task object
@@ -52,14 +53,13 @@ class TaskManager {
 
   editTask(id) {
     for (let i = 0; i < this.taskList.length; i++) {
+      //let editBtn = document.querySelector('.btn-secondary')
       if (this.taskList[i].id === id) {
         console.log("Found the index of the task wanted: ", i);
-        // document.querySelector('btn-secondary').innerHTML = "done"
-
         // editBtn.innerHTML = "Done";
         // editBtn.className = "btn btn-success";
-        //update the localstorage
-        this.updateCache();
+        // //update the localstorage
+        // this.updateCache();
       }
     }
   }
@@ -144,13 +144,12 @@ const htmlDivs = (task) => {
   div.appendChild(lastBtnDiv)
 
   //create edit button
-  const editBtn = document.createElement('button');
+  let editBtn = document.createElement('button');
   editBtn.innerHTML = "Edit";
-  editBtn.className = 'btn btn-secondary'
+  editBtn.className = 'btn btn-secondary';
   editBtn.addEventListener('click', (e) => {
     editBtn.innerHTML = "Mask as Done";
     editBtn.className = "btn btn-success";
-    task.status.value = "done"
     taskPlanner.editTask(task.id)
 
   })
@@ -202,10 +201,30 @@ const displayDateTime = () => {
     minutes += minutes < 10 ? '0' : '';
 
     // timeDiv.innerHTML = hours + ":" + minutes + " " + ampm;
-    timeDiv.innerHTML = `Today is: ${currentDate} ${hours}:${minutes}:${seconds} ${ampm}`
+    timeDiv.innerHTML = `${currentDate} ${hours}:${minutes}:${seconds} ${ampm}`
   }, 1000);
 };
 
 displayDateTime()
 
 
+
+
+
+
+//Search Bar local storage 
+// const searchBarButton = document.getElementById('search');
+// const searchBarValue = document.getElementById('searchValue').value;
+// searchBarButton.addEventListener('click', () => {
+
+//   taskPlanner.addTask.filter((element) => {
+
+//     if (element.name.includes(searchBarValue)) {
+
+//       console.log("yes")
+
+//     } else {
+//       console.log('no')
+//     }
+//   })
+// })

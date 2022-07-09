@@ -34,10 +34,10 @@
         </button>
         <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
           <div class="navbar-nav d-flex flex-column">
-            <a class="nav-link active" aria-current="page" href=""><i class="fa-solid fa-house-user me-2"></i>Home </a>
-            <a class="nav-link" href=""><i class="fa-solid fa-calendar-days me-2"></i>Calender</a>
-            <a class="nav-link" href=""><i class="fa-solid fa-bell me-2"></i>Notifications</a>
-            <a class="nav-link" href=""><i class="fa-solid fa-filter me-2"></i>Filter</a>
+            <a href="">Todo</a>
+            <a href="">Progress</a>
+            <a href="">Review</a>
+            <a href="">Done</a>
           </div>
         </div>
       </div>
@@ -46,10 +46,6 @@
   </header>
   <main>
     <!-- --------------------------- Title" ----------------------------->
-    <div class="d-flex mb-5 search" style="width: 70%;" role="search">
-      <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-      <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
-    </div>
     <div class="container py-6 ">
       <h1 id="title">Task Manager</h1>
       <div class="row gap-5 mb-3">
@@ -100,7 +96,6 @@
                       required>
                   </div>
                 </div>
-
                 <!-- descrption -->
                 <div class="mb-3">
                   <label for="exampleFormControlTextarea1" class="form-label">Descrption: </label><br>
@@ -108,25 +103,20 @@
                   <textarea id="descrption" class="form-control" id="exampleFormControlTextarea1" rows="6"
                     placeholder="Descrption..." required></textarea>
                 </div>
-
                 <!-- Assigned to -->
                 <div class="mb-3">
                   <label for="">Assigned to: </label><br>
                   <span id="assignTo"></span>
                   <input id="assign" type="text" class="form-control" placeholder="First name" aria-label="First name"
                     required>
-
                 </div>
-
                 <!-- Due date -->
                 <div class="mb-3">
                   <label for="">Due Date: </label><br>
                   <span id="dateErr"></span>
                   <input id="dateValue" type="date" class="form-control mb-3">
                 </div>
-
                 <!-- Status -->
-
                 <div>
                   <label for="">Status: </label><br>
                   <span id="statusErr"></span>
