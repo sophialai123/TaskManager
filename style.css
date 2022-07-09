@@ -27,9 +27,8 @@ header {
 header .navbar {
   display: flex;
   flex-direction: column;
-  width: 15%;
+  width: 10%;
   height: 100vh;
-  /* background-color: cadetblue; */
   justify-content: flex-start;
   border: 1px solid slategray;
   border-radius: 8px;
