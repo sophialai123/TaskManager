@@ -108,16 +108,3 @@ resetButton.addEventListener('click', () => {
 
 })
 
-
-
-
-//reset buttion function
-resetButton.addEventListener('click', () => {
-  resetForm.reset();
-  fnameError.innerHTML = "";
-  descrptionError.innerHTML = "";
-  assignError.innerHTML = "";
-  dateError.innerHTML = "";
-  statusError.innerHTML = "";
-
-})

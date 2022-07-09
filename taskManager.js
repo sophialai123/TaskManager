@@ -24,7 +24,6 @@ class TaskManager {
     localStorage.setItem("storedTasks", JSON.stringify(this.taskList))
   }
 
-
   //add task value in the object
   addTask(name, description, assignedTo, dueDate, status) {
     const task = {
@@ -110,12 +109,6 @@ const createHtmlTask = (task) => {
 }
 
 
-/* 
- <div class="mb-3">
-<input class="form-control" type="text" placeholder="Status: ${task.status}"readonly>
-</div> */
-
-
 //divs will be added based on task status
 const htmlDivs = (task) => {
   let divBtnHtmlId
@@ -183,25 +176,24 @@ const htmlDivs = (task) => {
 
 const timeDiv = document.getElementById('time');
 
-window.reload
+
 
 const displayDateTime = () => {
 
 
   setInterval(function () {
 
-    let currentTime = new Date(),
-      currentDate = currentTime.toISOString().split('T')[0];
-    hours = currentTime.getHours(),
-      minutes = currentTime.getMinutes(),
-      seconds = currentTime.getSeconds(),
-      ampm = hours > 11 ? 'PM' : 'AM';
+    let currentTime = new Date();
+    let dayArr = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+    let monthArr = new Array("January", "February", "March", 'April', "May", "June", "July", "August", "September", "October", "Novermber", "December");
 
-    hours += hours < 10 ? '0' : '';
-    minutes += minutes < 10 ? '0' : '';
-
+    let day = currentTime.getDay();
+    let month = currentTime.getMonth();
+    let date = currentTime.getDate();
+    let year = currentTime.getFullYear();
+    let time = currentTime.toLocaleTimeString()
     // timeDiv.innerHTML = hours + ":" + minutes + " " + ampm;
-    timeDiv.innerHTML = `${currentDate} ${hours}:${minutes}:${seconds} ${ampm}`
+    timeDiv.innerHTML = `${dayArr[day]} ${date} ${monthArr[month]} ${year} ${time}`
   }, 1000);
 };
 
