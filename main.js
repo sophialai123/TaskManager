@@ -24,11 +24,11 @@ submbitButton.addEventListener('click', (event) => {
   event.preventDefault();
 
   //call all the validation functions
-  // validationTaskNameInput()
-  // validationDescrptionInput()
-  // validationAssignToInput()
-  // validationDueDateInput()
-  // validationTaskStatusInput()
+  validationTaskNameInput()
+  validationDescrptionInput()
+  validationAssignToInput()
+  validationDueDateInput()
+  validationTaskStatusInput()
   getAllFormInputValue()
 
 })

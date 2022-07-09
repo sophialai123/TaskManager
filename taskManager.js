@@ -148,7 +148,7 @@ const htmlDivs = (task) => {
   editBtn.innerHTML = "Edit";
   editBtn.className = 'btn btn-secondary';
   editBtn.addEventListener('click', (e) => {
-    editBtn.innerHTML = "Mask as Done";
+    editBtn.innerHTML = "Mark as Done";
     editBtn.className = "btn btn-success";
     taskPlanner.editTask(task.id)
 
