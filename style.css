@@ -10,8 +10,7 @@
 }
 
 :root {
-  --button-color: #712cf9;
-  --main-bg-color: #DBDFFD;
+  --main-bg-color: #F7EDDB;
 }
 
 
@@ -47,7 +46,6 @@ header button {
   font-size: 1.2rem;
   border: 1px solid slategray;
   border-radius: 10px;
-  background-color: var(--button-color);
   color: antiquewhite;
   margin-top: 0;
 }
@@ -106,14 +104,7 @@ main .search {
   color: #90C8AC;
 }
 
-main #todo {
-  background-color: #4B91FD;
-}
 
-
-/* #todo {
-  border-color: #712cf9;
-} */
 
 #todo:hover,
 #progress:hover,
