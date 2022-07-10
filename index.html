@@ -41,6 +41,7 @@
           </div>
         </div>
       </div>
+
     </nav>
     <button id="time"></button>
   </header>
@@ -50,34 +51,35 @@
       <h1 id="title">Task Manager</h1>
       <div class="row gap-5 mb-3">
         <!-- --------------------  Todo --------------------------->
-        <div class="col border rounded bg-light" id="todo">
+        <div class="col  border border-info rounded bg-light" width="25%" id="todo">
           <h3 class="text-center text-info">Todo
             <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-circle-plus "></i></a>
           </h3>
         </div>
         <!-- --------------------  In Progress --------------------------->
-        <div class="col  border rounded bg-light" id="progress">
+        <div class="col  border border-primary rounded bg-light " width="25%" id="progress">
           <h3 class="text-center text-primary">Progress<a data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
                 class="fa-solid fa-circle-plus"></i></a></h3>
         </div>
 
         <!-- --------------------  Review --------------------------->
-        <div class="col border rounded bg-light" id="review">
+        <div class="col  border border-warning rounded bg-light " width=" 5%" id="review">
           <h3 class="text-center text-warning">
             Review<a data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
-                class="fa-solid fa-circle-plus "></i></a></h3>
+                class="fa-solid fa-circle-plus "></i></a>
+          </h3>
           <div>
           </div>
         </div>
         <!-- -------------------- Done --------------------------->
-        <div class="col border rounded bg-light" id="done">
+        <div class="col border border-success rounded bg-light" width="25%" id="done">
           <h3 class="text-center text-success">Done<a data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
-                class="fa-solid fa-circle-plus "></i></a></h3>
+                class=" fa-solid fa-circle-plus "></i></a></h3>
         </div>
       </div>
-      <!-- ------------------------------- Popup Form----------------------------- -->
+      <!-- ------------------------------- Popup Add Task Form----------------------------- -->
       <!-- Modal -->
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      <div class=" modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -135,7 +137,7 @@
             </div>
             <div class="modal-footer justify-content-center">
 
-              <button id="resetButton" type="button" class="btn btn-success  mb-3">Reset</button>
+              <button id="resetButton" type="button" class="btn btn-primary   mb-3">Reset</button>
               <button id="submitButton" type="button" class="btn btn-success  mb-3">Submit</button>
 
             </div>
@@ -143,7 +145,7 @@
         </div>
       </div>
     </div>
-    <!-- ------------------------------- End of Form----------------------------- -->
+    <!-- ------------------------------- End of the Form----------------------------- -->
   </main>
   <script src="./taskManager.js"></script>
   <script src="main.js"></script>

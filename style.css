@@ -106,15 +106,37 @@ main .search {
   color: #90C8AC;
 }
 
+main #todo {
+  background-color: #4B91FD;
+}
 
-#todo textarea:focus,
-#progress textarea:focus,
-#review textarea:focus,
-#done textarea:focus {
+
+/* #todo {
+  border-color: #712cf9;
+} */
+
+#todo:hover,
+#progress:hover,
+#review:hover,
+#done:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+
+#todo textarea:hover,
+#progress textarea:hover,
+#review textarea:hover,
+#done textarea:hover,
+button:hover {
   outline-style: none;
   box-shadow: none;
   border-color: transparent;
-  background-color: wheat;
+  background-color: #90C8AC;
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 @media screen and (max-width:1200px) {
@@ -160,7 +182,6 @@ main .search {
   header a {
     font-size: 15px;
   }
-
 
   header button {
     font-size: 0.7rem;
@@ -228,4 +249,9 @@ form #close {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+
+form {
+  color: #5B84B1FF;
 }

@@ -86,7 +86,7 @@ const createHtmlTask = (task) => {
     `
           <div class="card mb-3">
           <!-- <labtimeDivfor="">Task Name: </label> -->
-            <h5 class="card-header text-center fw-bold">${task.name}</h5>
+            <h5 class="card-header text-center fw-bold text-success">${task.name}</h5>
             <div class="card-body border">
               <div class="mb-3 ">
               <!--  <labtimeDivclass="form-control for="">Assigned to: </label>-->
@@ -131,6 +131,8 @@ const htmlDivs = (task) => {
   const div = document.createElement('div');
   div.innerHTML = createHtmlTask(task);
 
+
+
   const lastBtnDiv = document.createElement("div");
   lastBtnDiv.className = 'd-flex gap-3 justify-content-center mb-3';
 
@@ -143,8 +145,11 @@ const htmlDivs = (task) => {
   editBtn.addEventListener('click', (e) => {
     editBtn.innerHTML = "Mark as Done";
     editBtn.className = "btn btn-success";
-    taskPlanner.editTask(task.id)
-
+    if (editBtn.innerHTML = "Mark as Done") {
+      document.getElementById('done').appendChild(div);
+    }
+    taskPlanner.editTask(task.id);
+    taskPlanner.updateCache()
   })
 
 
@@ -166,7 +171,7 @@ const htmlDivs = (task) => {
   lastBtnDiv.appendChild(deleteBtn)
 
   // //add the div based on the statas Id
-  return document.getElementById(divBtnHtmlId).appendChild(div);
+  return document.getElementById(divBtnHtmlId).appendChild(div)
 }
 
 
