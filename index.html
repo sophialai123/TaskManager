@@ -34,10 +34,10 @@
         </button>
         <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
           <div class="navbar-nav d-flex flex-column">
-            <a href="">Todo</a>
-            <a href="">Progress</a>
-            <a href="">Review</a>
-            <a href="">Done</a>
+            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="text-info">Todo</a>
+            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="text-primary">Progress</a>
+            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="text-warning">Review</a>
+            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="text-success">Done</a>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@
       </div>
       <!-- ------------------------------- Popup Add Task Form----------------------------- -->
       <!-- Modal -->
-      <div class=" modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
