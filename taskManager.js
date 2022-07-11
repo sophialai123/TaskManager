@@ -47,6 +47,7 @@ class TaskManager {
   render(task) {
     htmlDivs(task)
 
+
   }
 
 
@@ -132,11 +133,35 @@ const htmlDivs = (task) => {
   div.innerHTML = createHtmlTask(task);
 
 
+  const statusDiv = document.createElement('div');
+  statusDiv.innerHTML = ` <select id="${task.id}" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+  required>
+  <option selected></option>
+  <option value="Todo">Todo</option>
+  <option value="Progress">Progress</option>
+  <option value="Review">Review</option>
+  <option value="Done">Done</option>
+</select>`
+
+  div.appendChild(statusDiv);
+
+
+  document.getElementById('status').addEventListener("click", (e) => {
+
+    for (let i = 0; i < taskPlanner.taskList.length; i++) {
+      console.log(taskPlanner.taskList[i].status)
+    }
+
+  })
+
+
 
   const lastBtnDiv = document.createElement("div");
   lastBtnDiv.className = 'd-flex gap-3 justify-content-center mb-3';
 
   div.appendChild(lastBtnDiv)
+
+
 
   //create edit button
   let editBtn = document.createElement('button');
@@ -179,19 +204,14 @@ const htmlDivs = (task) => {
 
 
 
-const timeDiv = document.getElementById('time');
-
 
 
 const displayDateTime = () => {
-
-
+  const timeDiv = document.getElementById('time');
   setInterval(function () {
-
     let currentTime = new Date();
     let dayArr = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
     let monthArr = new Array("January", "February", "March", 'April', "May", "June", "July", "August", "September", "October", "Novermber", "December");
-
     let day = currentTime.getDay();
     let month = currentTime.getMonth();
     let date = currentTime.getDate();

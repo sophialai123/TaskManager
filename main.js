@@ -23,75 +23,113 @@ submbitButton.addEventListener('click', (event) => {
 
   event.preventDefault();
 
-  //call all the validation functions
-  validationTaskNameInput()
-  validationDescrptionInput()
-  validationAssignToInput()
-  validationDueDateInput()
-  validationTaskStatusInput()
-  getAllFormInputValue()
+  const dateValue = document.getElementById('dateValue');
+  let enteredDate = new Date(dateValue.value);
 
-})
+  //validatation form input functions
 
-
-//validatation form input functions
-const validationTaskNameInput = () => {
   if (fname.value == '' || fname.value == null || fname.value.length < 8) {
     fnameError.innerHTML = "Input required and longer than 8 characters";
     fnameError.style.color = 'red';
   }
 
-}
-
-
-const validationDescrptionInput = () => {
-  if (descrption.value == "" || descrption.value == null || descrption.value.length < 15) {
+  else if (descrption.value == "" || descrption.value == null || descrption.value.length < 15) {
     descrptionError.innerHTML = 'Input required and longer than 15 characters';
     descrptionError.style.color = 'red';
-
   }
-}
-
-const validationAssignToInput = () => {
-  if (assign.value == "" || assign.value == null) {
+  else if (assign.value == "" || assign.value == null) {
     assignError.innerHTML = "Input required"
     assignError.style.color = "red";
   }
-}
-
-
-const validationDueDateInput = () => {
   //compare current date with input date
-  const dateValue = document.getElementById('dateValue');
-  let enteredDate = new Date(dateValue.value);
-  if (dateValue.value === null || dateValue.value === "") {
+  else if (dateValue.value === null || dateValue.value === "") {
     dateError.innerHTML = "Input required";
     dateError.style.color = "red";
-  } else if (date.getTime() > enteredDate.getTime()) {
+  }
+  else if (date.getTime() > enteredDate.getTime()) {
     dateError.innerHTML = "Due date must be before the current date";
     dateError.style.color = "red";
   }
-}
 
-
-const validationTaskStatusInput = () => {
-  if (statusInput.value == null || statusInput.value == "") {
+  else if (statusInput.value == null || statusInput.value == "") {
     statusError.innerHTML = "Input required";
     statusError.style.color = "red";
-
   }
-}
+
+  else {
+    //task value from the classManger
+    taskPlanner.addTask(`${fname.value}`, `${descrption.value}`, ` ${assign.value}`, `${enteredDate.toISOString().split('T')[0]}`, `${statusInput.value}`);
+  }
+
+})
 
 
 
-const getAllFormInputValue = () => {
+//call all the validation functions
+// validationTaskNameInput()
+// validationDescrptionInput()
+// validationAssignToInput()
+// validationDueDateInput()
+// validationTaskStatusInput()
+// getAllFormInputValue()
 
-  const dateValue = document.getElementById('dateValue');
-  let enteredDate = new Date(dateValue.value);
-  //task value from the classManger
-  taskPlanner.addTask(`${fname.value}`, `${descrption.value}`, ` ${assign.value}`, `${enteredDate.toISOString().split('T')[0]}`, `${statusInput.value}`);
+// //validatation form input functions
+// const validationTaskNameInput = () => {
+//   if (fname.value == '' || fname.value == null || fname.value.length < 8) {
+//     fnameError.innerHTML = "Input required and longer than 8 characters";
+//     fnameError.style.color = 'red';
+//   } else { validationDescrptionInput() }
 
-}
+// }
+
+
+// const validationDescrptionInput = () => {
+//   if (descrption.value == "" || descrption.value == null || descrption.value.length < 15) {
+//     descrptionError.innerHTML = 'Input required and longer than 15 characters';
+//     descrptionError.style.color = 'red';
+//   }
+// }
+
+// const validationAssignToInput = () => {
+//   if (assign.value == "" || assign.value == null) {
+//     assignError.innerHTML = "Input required"
+//     assignError.style.color = "red";
+//   }
+// }
+
+
+// const validationDueDateInput = (event) => {
+//   //compare current date with input date
+//   const dateValue = document.getElementById('dateValue');
+//   let enteredDate = new Date(dateValue.value);
+//   if (dateValue.value === null || dateValue.value === "") {
+//     dateError.innerHTML = "Input required";
+//     dateError.style.color = "red";
+//   } else if (date.getTime() > enteredDate.getTime()) {
+//     dateError.innerHTML = "Due date must be before the current date";
+//     dateError.style.color = "red";
+//   }
+// }
+
+
+// const validationTaskStatusInput = () => {
+//   if (statusInput.value == null || statusInput.value == "") {
+//     statusError.innerHTML = "Input required";
+//     statusError.style.color = "red";
+
+//   }
+// }
+
+
+
+// const getAllFormInputValue = () => {
+
+//   const dateValue = document.getElementById('dateValue');
+//   let enteredDate = new Date(dateValue.value);
+//   //task value from the classManger
+//   taskPlanner.addTask(`${fname.value}`, `${descrption.value}`, ` ${assign.value}`, `${enteredDate.toISOString().split('T')[0]}`, `${statusInput.value}`);
+
+// }
 
 
 
@@ -107,4 +145,3 @@ resetButton.addEventListener('click', () => {
   statusError.innerHTML = "";
 
 })
-
