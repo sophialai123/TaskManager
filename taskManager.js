@@ -132,45 +132,55 @@ const htmlDivs = (task) => {
   const div = document.createElement('div');
   div.innerHTML = createHtmlTask(task);
 
-
-  const statusDiv = document.createElement('div');
-  statusDiv.innerHTML = ` <select id="${task.id}" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
-  required>
-  <option selected></option>
-  <option value="Todo">Todo</option>
-  <option value="Progress">Progress</option>
-  <option value="Review">Review</option>
-  <option value="Done">Done</option>
-</select>`
-
-  div.appendChild(statusDiv);
-
-
-  document.getElementById('status').addEventListener("click", (e) => {
-
-    for (let i = 0; i < taskPlanner.taskList.length; i++) {
-      console.log(taskPlanner.taskList[i].status)
-    }
-
-  })
-
-
-
   const lastBtnDiv = document.createElement("div");
   lastBtnDiv.className = 'd-flex gap-3 justify-content-center mb-3';
 
   div.appendChild(lastBtnDiv)
 
-
-
   //create edit button
-  let editBtn = document.createElement('button');
-  editBtn.innerHTML = "Edit";
-  editBtn.className = 'btn btn-secondary';
-  editBtn.addEventListener('click', (e) => {
-    editBtn.innerHTML = "Mark as Done";
-    editBtn.className = "btn btn-success";
-    if (editBtn.innerHTML = "Mark as Done") {
+  let ProgressBtn = document.createElement('button');
+  ProgressBtn.innerHTML = "Progress";
+  ProgressBtn.className = 'btn btn-outline-primary';
+  ProgressBtn.addEventListener('click', (e) => {
+    // ProgressBtn.innerHTML = "Mark as Done";
+
+    ProgressBtn.className = "btn btn-primary";
+    // if (editBtn.innerHTML = "Mark as Done") {
+    //   document.getElementById('done').appendChild(div);
+    // } 
+    if (ProgressBtn.innerHTML = "Progress") {
+      ProgressBtn.innerHTML = "Mark as Progess"
+      document.getElementById('progress').appendChild(div);
+    }
+    taskPlanner.editTask(task.id);
+    taskPlanner.updateCache()
+  })
+
+  //create Review button
+  let reviewBtn = document.createElement('button');
+  reviewBtn.innerHTML = "Review";
+  reviewBtn.className = 'btn btn-outline-warning';
+  reviewBtn.addEventListener('click', (e) => {
+    // reviewBtn.innerHTML = "Mark as Done";
+
+    reviewBtn.className = "btn btn-warning";
+    if (reviewBtn.innerHTML = "Review") {
+      reviewBtn.innerHTML = "Mark as Review"
+      document.getElementById('review').appendChild(div);
+    }
+    taskPlanner.editTask(task.id);
+    taskPlanner.updateCache()
+  })
+
+  //create done button
+  let doneBtn = document.createElement('button');
+  doneBtn.innerHTML = "Done";
+  doneBtn.className = 'btn btn-outline-success';
+  doneBtn.addEventListener('click', (e) => {
+
+    doneBtn.className = "btn btn-success";
+    if (doneBtn.innerHTML = "Done") {
+      doneBtn.innerHTML = "Mark as Done";
       document.getElementById('done').appendChild(div);
     }
     taskPlanner.editTask(task.id);
@@ -178,12 +188,15 @@ const htmlDivs = (task) => {
   })
 
 
+  lastBtnDiv.appendChild(ProgressBtn)
+  lastBtnDiv.appendChild(reviewBtn)
+  lastBtnDiv.appendChild(doneBtn)
   // div.appendChild(editBtn);
-  lastBtnDiv.appendChild(editBtn)
+
   //Create deletebutton
   const deleteBtn = document.createElement('button');
   deleteBtn.innerHTML = "Delete";
-  deleteBtn.className = 'btn btn-danger'
+  deleteBtn.className = 'btn btn-outline-danger'
   deleteBtn.addEventListener('click', (e) => {
     //call calss delete method
     taskPlanner.deleteTask(task.id)
@@ -191,11 +204,10 @@ const htmlDivs = (task) => {
     div.remove()
   })
 
-
   //div.appendChild(deleteBtn);
   lastBtnDiv.appendChild(deleteBtn)
 
-  // //add the div based on the statas Id
+  //add the div based on the statas Id
   return document.getElementById(divBtnHtmlId).appendChild(div)
 }
 
