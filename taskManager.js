@@ -46,20 +46,20 @@ class TaskManager {
   //display the task object
   render(task) {
     htmlDivs(task)
-
-
   }
 
 
-  editTask(id) {
+  editTask(id, status) {
     for (let i = 0; i < this.taskList.length; i++) {
       //let editBtn = document.querySelector('.btn-secondary')
       if (this.taskList[i].id === id) {
         console.log("Found the index of the task wanted: ", i);
-        // editBtn.innerHTML = "Done";
-        // editBtn.className = "btn btn-success";
+
+        console.log(this.taskList[i].status = status)
+
+
         // //update the localstorage
-        // this.updateCache();
+        this.updateCache();
       }
     }
   }
@@ -142,17 +142,10 @@ const htmlDivs = (task) => {
   ProgressBtn.innerHTML = "Progress";
   ProgressBtn.className = 'btn btn-outline-primary';
   ProgressBtn.addEventListener('click', (e) => {
-    // ProgressBtn.innerHTML = "Mark as Done";
-
-    ProgressBtn.className = "btn btn-primary";
-    // if (editBtn.innerHTML = "Mark as Done") {
-    //   document.getElementById('done').appendChild(div);
-    // } 
     if (ProgressBtn.innerHTML = "Progress") {
-      ProgressBtn.innerHTML = "Mark as Progess"
       document.getElementById('progress').appendChild(div);
     }
-    taskPlanner.editTask(task.id);
+    taskPlanner.editTask(task.id, "Progress");
     taskPlanner.updateCache()
   })
 
@@ -161,14 +154,12 @@ const htmlDivs = (task) => {
   reviewBtn.innerHTML = "Review";
   reviewBtn.className = 'btn btn-outline-warning';
   reviewBtn.addEventListener('click', (e) => {
-    // reviewBtn.innerHTML = "Mark as Done";
 
-    reviewBtn.className = "btn btn-warning";
     if (reviewBtn.innerHTML = "Review") {
-      reviewBtn.innerHTML = "Mark as Review"
+      // reviewBtn.innerHTML = "Mark as Review"
       document.getElementById('review').appendChild(div);
     }
-    taskPlanner.editTask(task.id);
+    taskPlanner.editTask(task.id, "Review");
     taskPlanner.updateCache()
   })
 
@@ -178,20 +169,15 @@ const htmlDivs = (task) => {
   doneBtn.className = 'btn btn-outline-success';
   doneBtn.addEventListener('click', (e) => {
 
-    doneBtn.className = "btn btn-success";
     if (doneBtn.innerHTML = "Done") {
-      doneBtn.innerHTML = "Mark as Done";
       document.getElementById('done').appendChild(div);
     }
-    taskPlanner.editTask(task.id);
-    taskPlanner.updateCache()
+    taskPlanner.editTask(task.id, "Done");
+
   })
 
 
-  lastBtnDiv.appendChild(ProgressBtn)
-  lastBtnDiv.appendChild(reviewBtn)
-  lastBtnDiv.appendChild(doneBtn)
-  // div.appendChild(editBtn);
+
 
   //Create deletebutton
   const deleteBtn = document.createElement('button');
@@ -204,8 +190,13 @@ const htmlDivs = (task) => {
     div.remove()
   })
 
-  //div.appendChild(deleteBtn);
-  lastBtnDiv.appendChild(deleteBtn)
+
+  // lastBtnDiv.appendChild(ProgressBtn)
+  // lastBtnDiv.appendChild(reviewBtn)
+  // lastBtnDiv.appendChild(doneBtn)
+  // lastBtnDiv.appendChild(deleteBtn)
+  //append all the children divs
+  lastBtnDiv.append(ProgressBtn, reviewBtn, doneBtn, deleteBtn)
 
   //add the div based on the statas Id
   return document.getElementById(divBtnHtmlId).appendChild(div)
@@ -229,7 +220,6 @@ const displayDateTime = () => {
     let date = currentTime.getDate();
     let year = currentTime.getFullYear();
     let time = currentTime.toLocaleTimeString()
-    // timeDiv.innerHTML = hours + ":" + minutes + " " + ampm;
     timeDiv.innerHTML = `${dayArr[day]} ${date} ${monthArr[month]} ${year} ${time}`
   }, 1000);
 };

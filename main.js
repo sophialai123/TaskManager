@@ -61,39 +61,68 @@ submbitButton.addEventListener('click', (event) => {
     taskPlanner.addTask(`${fname.value}`, `${descrption.value}`, ` ${assign.value}`, `${enteredDate.toISOString().split('T')[0]}`, `${statusInput.value}`);
   }
 
+  //call all the validation functions
+  // validationTaskNameInput()
+  // validationDescrptionInput()
+  // validationAssignToInput()
+  // validationDueDateInput()
+  // validationTaskStatusInput()
+  // getAllFormInputValue()
+  // console.log(validationTaskNameInput())
+
+  // })
+
+
+  // if (validationTaskNameInput() === true) {
+  //   validationDescrptionInput()
+  // } else if (validationDescrptionInput() === true) {
+  //   validationAssignToInput()
+  // } else if (validationAssignToInput() === true) {
+  //   validationDueDateInput()
+  // } else if (validationDueDateInput() === true) {
+  //   validationTaskStatusInput()
+  // } else if (validationTaskStatusInput() === true) {
+  //   getAllFormInputValue()
+  // }
+  // else {
+  //   getAllFormInputValue()
+
+  // }
+
 })
 
 
 
-//call all the validation functions
-// validationTaskNameInput()
-// validationDescrptionInput()
-// validationAssignToInput()
-// validationDueDateInput()
-// validationTaskStatusInput()
-// getAllFormInputValue()
 
 // //validatation form input functions
 // const validationTaskNameInput = () => {
 //   if (fname.value == '' || fname.value == null || fname.value.length < 8) {
 //     fnameError.innerHTML = "Input required and longer than 8 characters";
 //     fnameError.style.color = 'red';
-//   } else { validationDescrptionInput() }
+//     return true;
+//   } else if (fname.value.length > 8) {
+//     fnameError.innerHTML = "✅";
+//     return true;
+//   }
 
 // }
+
+
 
 
 // const validationDescrptionInput = () => {
 //   if (descrption.value == "" || descrption.value == null || descrption.value.length < 15) {
 //     descrptionError.innerHTML = 'Input required and longer than 15 characters';
 //     descrptionError.style.color = 'red';
+//     return true;
+
 //   }
 // }
-
 // const validationAssignToInput = () => {
 //   if (assign.value == "" || assign.value == null) {
 //     assignError.innerHTML = "Input required"
 //     assignError.style.color = "red";
+//     return true;
 //   }
 // }
 
@@ -105,9 +134,11 @@ submbitButton.addEventListener('click', (event) => {
 //   if (dateValue.value === null || dateValue.value === "") {
 //     dateError.innerHTML = "Input required";
 //     dateError.style.color = "red";
+//     return true;
 //   } else if (date.getTime() > enteredDate.getTime()) {
 //     dateError.innerHTML = "Due date must be before the current date";
 //     dateError.style.color = "red";
+//     return true;
 //   }
 // }
 
@@ -116,7 +147,7 @@ submbitButton.addEventListener('click', (event) => {
 //   if (statusInput.value == null || statusInput.value == "") {
 //     statusError.innerHTML = "Input required";
 //     statusError.style.color = "red";
-
+//     return true;
 //   }
 // }
 
