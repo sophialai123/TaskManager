@@ -57,6 +57,8 @@ header a {
   text-align: start;
   padding: 10px;
   cursor: pointer;
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 
@@ -89,9 +91,6 @@ main a i {
   margin: 10px 0 0 100px;
 }
 
-main .search {
-  margin-left: 300px;
-}
 
 #title {
   font-family: 'Courier New', Courier, monospace;
@@ -104,6 +103,7 @@ main .search {
   padding: 30px;
   color: #90C8AC;
 }
+
 
 
 

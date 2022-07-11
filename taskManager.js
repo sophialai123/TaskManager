@@ -132,12 +132,26 @@ const htmlDivs = (task) => {
   const div = document.createElement('div');
   div.innerHTML = createHtmlTask(task);
 
+
+
   const lastBtnDiv = document.createElement("div");
   lastBtnDiv.className = 'd-flex gap-3 justify-content-center mb-3';
 
   div.appendChild(lastBtnDiv)
 
-  //create edit button
+  //create todo button
+  let todoBtn = document.createElement('button');
+  todoBtn.innerHTML = "Todo";
+  todoBtn.className = 'btn btn-outline-info';
+  todoBtn.addEventListener('click', (e) => {
+    if (todoBtn.innerHTML = "Todo") {
+      document.getElementById('todo').appendChild(div);
+    }
+    taskPlanner.editTask(task.id, "Todo");
+    taskPlanner.updateCache()
+  })
+
+  //create Progress button
   let ProgressBtn = document.createElement('button');
   ProgressBtn.innerHTML = "Progress";
   ProgressBtn.className = 'btn btn-outline-primary';
@@ -196,7 +210,9 @@ const htmlDivs = (task) => {
   // lastBtnDiv.appendChild(doneBtn)
   // lastBtnDiv.appendChild(deleteBtn)
   //append all the children divs
-  lastBtnDiv.append(ProgressBtn, reviewBtn, doneBtn, deleteBtn)
+
+  div.appendChild(deleteBtn)
+  lastBtnDiv.append(todoBtn, ProgressBtn, reviewBtn, doneBtn, deleteBtn)
 
   //add the div based on the statas Id
   return document.getElementById(divBtnHtmlId).appendChild(div)
