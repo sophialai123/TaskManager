@@ -68,12 +68,12 @@ class TaskManager {
     console.log(id)
     document.getElementById("task_title").innerHTML = 'Edit a Task';
     // document.getElementById("editIndex").value = id;
-    document.getElementById("fname").value = this.taskList[id].name;
-    document.getElementById("descrption").value = this.taskList[id].description;
-    document.getElementById("assign").value = this.taskList[id].assignedTo;
+    fname.value = this.taskList[id].name;
+    descrption.value = this.taskList[id].description;
+    assign.value = this.taskList[id].assignedTo;
     let dueDateFormatted = new Date(this.taskList[id].dueDate);
-    document.getElementById("dateValue").value = this.taskList[id].dueDate;
-    document.getElementById("status").value = this.taskList[id].status;
+    dateValue.value = this.taskList[id].dueDate;
+    statusInput.value = this.taskList[id].status;
     //after assigning the values to innerHTML show the modal use jquery
     $('#staticBackdrop').modal('show');
     //update the localstorage
