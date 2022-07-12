@@ -9,11 +9,11 @@ class TaskManager {
   //check if localsroge has data
   checkCache() {
     //console.log("Checking if anything is in the cache")
-    let cache = localStorage.getItem("storedTasks")
+    let cache = localStorage.getItem("storedtaskList")
     if (cache) {
-      let tasks = JSON.parse(cache)
-      //console.log(tasks)
-      tasks.forEach((task) => {
+      let taskList = JSON.parse(cache)
+      //console.log(taskList)
+      taskList.forEach((task) => {
         this.addTask(task.name, task.description, task.assignedTo, task.dueDate, task.status)
       })
     }
@@ -21,7 +21,7 @@ class TaskManager {
 
   //update localStorage Data
   updateCache() {
-    localStorage.setItem("storedTasks", JSON.stringify(this.taskList))
+    localStorage.setItem("storedtaskList", JSON.stringify(this.taskList))
   }
 
   //add task value in the object
@@ -56,8 +56,6 @@ class TaskManager {
         console.log("Found the index of the task wanted: ", i);
 
         console.log(this.taskList[i].status = status)
-
-
         // //update the localstorage
         this.updateCache();
       }
@@ -65,7 +63,26 @@ class TaskManager {
   }
 
 
-  // Explicitly splices out the selected task from the 'tasks' array
+  editEachTask(id) {
+    this.id = id;
+    console.log(id)
+    document.getElementById("task_title").innerHTML = 'Edit a Task';
+    // document.getElementById("editIndex").value = id;
+    document.getElementById("fname").value = this.taskList[id].name;
+    document.getElementById("descrption").value = this.taskList[id].description;
+    document.getElementById("assign").value = this.taskList[id].assignedTo;
+    let dueDateFormatted = new Date(this.taskList[id].dueDate);
+    document.getElementById("dateValue").value = this.taskList[id].dueDate;
+    document.getElementById("status").value = this.taskList[id].status;
+    //after assigning the values to innerHTML show the modal use jquery
+    $('#staticBackdrop').modal('show');
+
+    //update the localstorage
+    this.updateCache();
+  }
+
+
+  // Explicitly splices out the selected task from the 'taskList' array
   //not working yet
   deleteTask(id) {
     for (let i = 0; i < this.taskList.length; i++) {
@@ -106,7 +123,6 @@ const createHtmlTask = (task) => {
          </div >  
         `
   )
-
 }
 
 
@@ -142,14 +158,13 @@ const htmlDivs = (task) => {
 
 
   //edit button
-
   let editBtn = document.createElement('button');
   editBtn.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
   editBtn.className = 'btn btn-outline-secondary';
   editBtn.style.color = "black"
   editBtn.addEventListener('click', (e) => {
-    //call calss delete method
-
+    //call calss edit method
+    taskPlanner.editEachTask(task.id);
   })
 
 

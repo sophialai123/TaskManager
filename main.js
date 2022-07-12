@@ -80,10 +80,6 @@ submbitButton.addEventListener('click', (event) => {
 
 
 
-
-
-
-
   //call all the validation functions
   // validationTaskNameInput()
   // validationDescrptionInput()
