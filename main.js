@@ -47,7 +47,7 @@ submbitButton.addEventListener('click', (event) => {
     dateError.style.color = "red";
   }
   else if (date.getTime() > enteredDate.getTime()) {
-    dateError.innerHTML = "Due date must be before the current date";
+    dateError.innerHTML = "Due date must be after the current date";
     dateError.style.color = "red";
   }
 
