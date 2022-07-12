@@ -76,7 +76,6 @@ class TaskManager {
     document.getElementById("status").value = this.taskList[id].status;
     //after assigning the values to innerHTML show the modal use jquery
     $('#staticBackdrop').modal('show');
-
     //update the localstorage
     this.updateCache();
   }
