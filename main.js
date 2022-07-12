@@ -46,8 +46,16 @@ submbitButton.addEventListener('click', (event) => {
   if (assign.value == "" || assign.value == null) {
     assignError.innerHTML = "Input required"
     assignError.style.color = "red";
-  } else {
+  } else if (assign.value !== "") {
     assignError.innerHTML = "✅ ";
+  }
+
+
+  if (statusInput.value == null || statusInput.value == "") {
+    statusError.innerHTML = "Input required";
+    statusError.style.color = "red";
+  } else if (statusInput.value !== "") {
+    statusError.innerHTML = "✅ ";
   }
 
 
@@ -60,20 +68,20 @@ submbitButton.addEventListener('click', (event) => {
   else if (date.getTime() > enteredDate.getTime()) {
     dateError.innerHTML = "Due date must be after the current date";
     dateError.style.color = "red";
-  } else {
+  } else if (date.getTime() < enteredDate.getTime()) {
     dateError.innerHTML = "✅ ";
-  }
-
-  if (statusInput.value == null || statusInput.value == "") {
-    statusError.innerHTML = "Input required";
-    statusError.style.color = "red";
-  } else {
-    statusError.innerHTML = "✅ ";
   }
 
 
   //task value from the classManger
   taskPlanner.addTask(`${fname.value}`, `${descrption.value}`, ` ${assign.value}`, `${enteredDate.toISOString().split('T')[0]}`, `${statusInput.value}`);
+
+
+
+
+
+
+
 
 
   //call all the validation functions

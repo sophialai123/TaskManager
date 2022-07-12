@@ -139,6 +139,21 @@ const htmlDivs = (task) => {
 
   div.appendChild(lastBtnDiv)
 
+
+
+  //edit button
+
+  let editBtn = document.createElement('button');
+  editBtn.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
+  editBtn.className = 'btn btn-outline-secondary';
+  editBtn.style.color = "black"
+  editBtn.addEventListener('click', (e) => {
+    //call calss delete method
+
+  })
+
+
+
   //create todo button
   let todoBtn = document.createElement('button');
   todoBtn.innerHTML = "Todo";
@@ -195,8 +210,9 @@ const htmlDivs = (task) => {
 
   //Create deletebutton
   const deleteBtn = document.createElement('button');
-  deleteBtn.innerHTML = "Delete";
-  deleteBtn.className = 'btn btn-outline-danger'
+  deleteBtn.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
+  deleteBtn.className = 'btn btn-outline-danger';
+  deleteBtn.style.color = "black"
   deleteBtn.addEventListener('click', (e) => {
     //call calss delete method
     taskPlanner.deleteTask(task.id)
@@ -204,23 +220,12 @@ const htmlDivs = (task) => {
     div.remove()
   })
 
-
-  // lastBtnDiv.appendChild(ProgressBtn)
-  // lastBtnDiv.appendChild(reviewBtn)
-  // lastBtnDiv.appendChild(doneBtn)
-  // lastBtnDiv.appendChild(deleteBtn)
-  //append all the children divs
-
   div.appendChild(deleteBtn)
-  lastBtnDiv.append(todoBtn, ProgressBtn, reviewBtn, doneBtn, deleteBtn)
+  lastBtnDiv.append(editBtn, todoBtn, ProgressBtn, reviewBtn, doneBtn, deleteBtn)
 
   //add the div based on the statas Id
   return document.getElementById(divBtnHtmlId).appendChild(div)
 }
-
-
-
-
 
 
 
