@@ -3,20 +3,7 @@
 // //call the taskPlanner class here
 const taskPlanner = new TaskManager();
 
-const fname = document.getElementById('fname');
-const fnameError = document.getElementById('ferr');
-const descrption = document.getElementById('descrption');
-const descrptionError = document.getElementById('derr');
-const assign = document.getElementById('assign');
-const assignError = document.getElementById('assignTo');
-const date = new Date();
-const dateError = document.getElementById('dateErr');
-const statusInput = document.getElementById('status');
-const statusError = document.getElementById('statusErr')
-const submbitButton = document.getElementById('submitButton');
-const resetButton = document.getElementById('resetButton');
-const resetForm = document.getElementById('form');
-const dateValue = document.getElementById('dateValue');
+
 
 //valiated names input value
 submbitButton.addEventListener('click', (event) => {

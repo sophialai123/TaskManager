@@ -1,3 +1,19 @@
+
+const fname = document.getElementById('fname');
+const fnameError = document.getElementById('ferr');
+const descrption = document.getElementById('descrption');
+const descrptionError = document.getElementById('derr');
+const assign = document.getElementById('assign');
+const assignError = document.getElementById('assignTo');
+const date = new Date();
+const dateError = document.getElementById('dateErr');
+const statusInput = document.getElementById('status');
+const statusError = document.getElementById('statusErr')
+const submbitButton = document.getElementById('submitButton');
+const resetButton = document.getElementById('resetButton');
+const resetForm = document.getElementById('form');
+const dateValue = document.getElementById('dateValue');
+
 //create a taskManager class
 class TaskManager {
   constructor() {
@@ -54,7 +70,6 @@ class TaskManager {
       //let editBtn = document.querySelector('.btn-secondary')
       if (this.taskList[i].id === id) {
         console.log("Found the index of the task wanted: ", i);
-
         console.log(this.taskList[i].status = status)
         // //update the localstorage
         this.updateCache();
@@ -63,23 +78,26 @@ class TaskManager {
   }
 
 
+  //track each task.id, FIND index instead of id to delete it.
   editEachTask(id) {
-    this.id = id;
-    console.log(id)
-    document.getElementById("task_title").innerHTML = 'Edit a Task';
-    // document.getElementById("editIndex").value = id;
-    fname.value = this.taskList[id].name;
-    descrption.value = this.taskList[id].description;
-    assign.value = this.taskList[id].assignedTo;
-    let dueDateFormatted = new Date(this.taskList[id].dueDate);
-    dateValue.value = this.taskList[id].dueDate;
-    statusInput.value = this.taskList[id].status;
-    //after assigning the values to innerHTML show the modal use jquery
-    $('#staticBackdrop').modal('show');
-    //update the localstorage
-    this.updateCache();
+    for (let i = 0; i < this.taskList.length; i++) {
+      if (this.taskList[i].id === id) {
+        document.getElementById("task_title").innerHTML = 'Edit a Task';
+        fname.value = this.taskList[i].name;
+        descrption.value = this.taskList[i].description;
+        descrption.value = this.taskList[i].description;
+        assign.value = this.taskList[i].assignedTo;
+        dateValue.value = this.taskList[i].dueDate;
+        statusInput.value = this.taskList[i].status;
+        submbitButton.addEventListener('click', (e) => {
+          //need to refresh the page 
+          this.deleteTask(id)
+          //reload the page afterward
+          document.location.reload();
+        })
+      }
+    }
   }
-
 
   // Explicitly splices out the selected task from the 'taskList' array
   //not working yet
@@ -162,11 +180,17 @@ const htmlDivs = (task) => {
   editBtn.className = 'btn btn-outline-secondary';
   editBtn.style.color = "black"
   editBtn.addEventListener('click', (e) => {
+
+    //after assigning the values to innerHTML show the modal use jquery
+    $('#staticBackdrop').modal('show');
     //call calss edit method
-    taskPlanner.editEachTask(task.id);
+
+    taskPlanner.editEachTask(task.id)
+    //taskPlanner.updateCache()
+    if (submbitButton.clicked === true) {
+      div.remove();
+    }
   })
-
-
 
   //create todo button
   let todoBtn = document.createElement('button');
@@ -206,6 +230,7 @@ const htmlDivs = (task) => {
     taskPlanner.updateCache()
   })
 
+
   //create done button
   let doneBtn = document.createElement('button');
   doneBtn.innerHTML = "Done";
@@ -216,11 +241,8 @@ const htmlDivs = (task) => {
       document.getElementById('done').appendChild(div);
     }
     taskPlanner.editTask(task.id, "Done");
-
+    taskPlanner.updateCache()
   })
-
-
-
 
   //Create deletebutton
   const deleteBtn = document.createElement('button');
