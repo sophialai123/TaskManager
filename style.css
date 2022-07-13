@@ -194,11 +194,17 @@ button:hover {
     display: none;
   }
 
+  .lastDiv {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
 }
 
 @media screen and (max-width:480px) {
   header .navbar {
-    width: 30%;
+    width: 28%;
   }
 
   h1 {
@@ -224,6 +230,11 @@ button:hover {
     top: 30px;
     left: 35%;
   }
+
+  /* h5 {
+    font-size: 22px;
+  } */
+
 
 
 }

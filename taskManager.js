@@ -168,7 +168,7 @@ const htmlDivs = (task) => {
 
 
   const lastBtnDiv = document.createElement("div");
-  lastBtnDiv.className = 'd-flex gap-3 justify-content-center mb-3';
+  lastBtnDiv.className = 'lastDiv d-flex gap-3 justify-content-center mb-3 ';
 
   div.appendChild(lastBtnDiv)
 
