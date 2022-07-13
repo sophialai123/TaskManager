@@ -223,7 +223,6 @@ const htmlDivs = (task) => {
   reviewBtn.addEventListener('click', (e) => {
 
     if (reviewBtn.innerHTML = "Review") {
-      // reviewBtn.innerHTML = "Mark as Review"
       document.getElementById('review').appendChild(div);
     }
     taskPlanner.editTask(task.id, "Review");
