@@ -33,12 +33,6 @@
 ---
 ## Desktop size and [Demo](https://sophialai123.github.io/TaskManager/)
 
-![](images/desktop.png)
+![](images/Task.png)
 
----
 
-## Mobile size   
-
-| Input requirement    | Mark as Done               |
-| -------------------- | -------------------------- |
-| ![](images/form.png) | ![](images/mobilesize.png) |
