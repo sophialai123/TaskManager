@@ -1,6 +1,6 @@
 # TaskManager
 1. About Project
-    - TaskManager is a responsive web app to help users to organise tasks based on their task status. This project has used JavaScript localStorage, that means user data has been saved on the browser even after refreshing the page.
+    - TaskManager is an Object Oriented Programming web app to help users to organise tasks based on their task status. This project has used JavaScript localStorage, that means user data has been saved on the browser even after refreshing the page..
   
 ---
 
