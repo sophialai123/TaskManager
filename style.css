@@ -111,8 +111,8 @@ main a i {
 #progress:hover,
 #review:hover,
 #done:hover {
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
   cursor: pointer;
 }
 
@@ -126,8 +126,8 @@ button:hover {
   box-shadow: none;
   border-color: transparent;
   background-color: #90C8AC;
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
   cursor: pointer;
 }
 
