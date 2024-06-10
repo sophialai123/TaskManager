@@ -23,7 +23,7 @@
   <header>
     <nav class="navbar navbar-expand-lg bg-light">
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-success mt-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <button type="button" id="addTask" class="btn btn-success mt-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Add Task
       </button>
       <div class="container-fluid">
@@ -50,30 +50,23 @@
       <div class="row gap-5 mb-3">
         <!-- --------------------  Todo --------------------------->
         <div class="col  border border-info rounded bg-light" id="todo">
-          <h3 class="text-center text-info">Todo
-            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-circle-plus "></i></a>
-          </h3>
-
+          <h3 class="text-center text-info">Todo</h3>
+          
         </div>
         <!-- --------------------  In Progress --------------------------->
         <div class="col  border border-primary rounded bg-light " id="progress">
-          <h3 class="text-center text-primary">Progress<a data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
-                class="fa-solid fa-circle-plus"></i></a></h3>
+          <h3 class="text-center text-primary">Progress</h3>
         </div>
 
         <!-- --------------------  Review --------------------------->
         <div class="col  border border-warning rounded bg-light " id="review">
-          <h3 class="text-center text-warning">
-            Review<a data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
-                class="fa-solid fa-circle-plus "></i></a>
-          </h3>
+          <h3 class="text-center text-warning">Review </h3>
           <div>
           </div>
         </div>
         <!-- -------------------- Done --------------------------->
         <div class="col border border-success rounded bg-light" id="done">
-          <h3 class="text-center text-success">Done<a data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
-                class=" fa-solid fa-circle-plus "></i></a></h3>
+          <h3 class="text-center text-success">Done</h3>
         </div>
       </div>
       <!-- ------------------------------- Popup Add Task Form----------------------------- -->
@@ -91,7 +84,7 @@
                 <!-- Name -->
                 <div class="row">
                   <div class="col">
-                    <label for="">Task Name: </label><br>
+                    <label for="">Task Name: <span class="required"> *</span></label><br>
                     <span id="ferr"></span>
                     <input id="fname" type="text" class="form-control" placeholder="Task name" aria-label="First name"
                       required>
@@ -106,20 +99,20 @@
                 </div>
                 <!-- Assigned to -->
                 <div class="mb-3">
-                  <label for="">Assigned to: </label><br>
+                  <label for="">Assigned to: <span class="required"> *</span></label><br>
                   <span id="assignTo"></span>
                   <input id="assign" type="text" class="form-control" placeholder="First name" aria-label="First name"
                     required>
                 </div>
                 <!-- Due date -->
                 <div class="mb-3">
-                  <label for="">Due Date: </label><br>
+                  <label for="">Due Date: <span class="required"> *</span></label><br>
                   <span id="dateErr"></span>
                   <input id="dateValue" type="date" class="form-control mb-3">
                 </div>
                 <!-- Status -->
                 <div>
-                  <label for="">Status: </label><br>
+                  <label for="">Status: <span class="required"> *</span></label><br>
                   <span id="statusErr"></span>
                   <select id="status" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
                     required>

@@ -258,3 +258,7 @@ form #close {
 form {
   color: #5B84B1FF;
 }
+
+.required{
+  color: red;
+}

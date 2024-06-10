@@ -1,4 +1,4 @@
-
+const addTask = document.getElementById('addTask');
 const fname = document.getElementById('fname');
 const fnameError = document.getElementById('ferr');
 const descrption = document.getElementById('descrption');
@@ -29,9 +29,11 @@ class TaskManager {
     if (cache) {
       let taskList = JSON.parse(cache)
       //console.log(taskList)
-      taskList.forEach((task) => {
-        this.addTask(task.name, task.description, task.assignedTo, task.dueDate, task.status)
-      })
+      if (taskList) {
+        taskList.forEach((task) => {
+          this.addTask(task.name, task.description, task.assignedTo, task.dueDate, task.status)
+        })
+     }
     }
   }
 
@@ -53,17 +55,19 @@ class TaskManager {
     //push all the task in the array
     this.taskList.push(task)
     //call the render method
-    this.render(task)
+    if (this.taskList) {
+      this.render(task)
     //update value for the localStorage in the array
     this.updateCache()
-
+    }
   }
 
   //display the task object
   render(task) {
-    htmlDivs(task)
+    if (task) {
+      htmlDivs(task)
+    }
   }
-
 
   editTask(id, status) {
     for (let i = 0; i < this.taskList.length; i++) {
@@ -142,6 +146,22 @@ const createHtmlTask = (task) => {
   )
 }
 
+const closeModal = () => {
+   //close the modal after submit the form
+   submbitButton.addEventListener('click', function () {
+    $('#staticBackdrop').modal('hide');
+  });
+}
+
+
+const clearInputsData = ()=>{
+  resetForm.reset();
+  fnameError.innerHTML = "";
+  descrptionError.innerHTML = "";
+  assignError.innerHTML = "";
+  dateError.innerHTML = "";
+  statusError.innerHTML = "";
+}
 
 //divs will be added based on task status
 const htmlDivs = (task) => {
@@ -173,7 +193,6 @@ const htmlDivs = (task) => {
   div.appendChild(lastBtnDiv)
 
 
-
   //edit button
   let editBtn = document.createElement('button');
   editBtn.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
@@ -183,6 +202,7 @@ const htmlDivs = (task) => {
 
     //after assigning the values to innerHTML show the modal use jquery
     $('#staticBackdrop').modal('show');
+    
     //call calss edit method
 
     taskPlanner.editEachTask(task.id)
