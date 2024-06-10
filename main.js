@@ -5,7 +5,10 @@ const taskPlanner = new TaskManager();
 
 
 addTask.addEventListener('click', clearInputsData)
-
+addTodoTask.addEventListener('click', clearInputsData)
+addProgressTask.addEventListener('click', clearInputsData)
+addReviewTask.addEventListener('click', clearInputsData)
+addDoneTask.addEventListener('click', clearInputsData)
 resetButton.addEventListener('click', clearInputsData)
 
 //valiated names input value
